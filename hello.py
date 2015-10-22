@@ -4,6 +4,8 @@ from flask import request, redirect
 
 app = Flask(__name__)
 
+email_adresses = []
+
 @app.route("/")
 def hello():
     return render_template('index.html')
@@ -11,7 +13,8 @@ def hello():
 @app.route("/signup", methods = ['POST'])
 def signup():
     email = request.form['email']
-    print("Ihre Email-Adresse ist '" + email +"'")
+    email_adresses.append(email)
+    print(email_adresses)
     return redirect('/')    
     
 if __name__ == "__main__":
